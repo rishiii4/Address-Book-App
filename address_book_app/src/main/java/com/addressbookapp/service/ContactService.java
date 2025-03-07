@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+// Logging
 @Slf4j
 public class ContactService {
     private final List<Contact> contactList = new ArrayList<>();
@@ -17,13 +18,13 @@ public class ContactService {
     public Contact addContact(ContactDTO contactDTO) {
         Contact contact = ContactMapper.INSTANCE.toEntity(contactDTO);
         contact.setId(contactList.size()+1);
-        log.info("Adding Employee: {}", contactDTO.getName());
+        log.info("Adding Contacts: {}", contactDTO.getName());
         contactList.add(contact);
         return contact;
     }
 
     public boolean deleteContact(int id){
-        log.info("Deleting an Employee by his Id");
+        log.info("Deleting a Contact by his Id");
         for(Contact con : contactList){
             if(id == con.getId()){
                 contactList.remove(con);
@@ -34,12 +35,12 @@ public class ContactService {
     }
 
     public List<Contact> getAllContact(){
-        log.info("Fetching all employees");
+        log.info("Fetching all Contact");
         return contactList;
     }
 
     public Contact getContactById(int id){
-        log.info("Getting an Employee by his Id");
+        log.info("Getting a Contact by his Id");
         for(Contact con : contactList){
             if(id == con.getId()){
                 return con;
@@ -49,7 +50,7 @@ public class ContactService {
     }
 
     public Contact updateContact(int id, ContactDTO contactDTO){
-        log.info("Employee Update Process Started");
+        log.info("Contact Update Process Started");
         for (Contact contact:contactList){
             if(id == contact.getId()){
                 contact.setName(contactDTO.getName());

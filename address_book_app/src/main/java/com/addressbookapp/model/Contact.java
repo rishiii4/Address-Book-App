@@ -11,6 +11,7 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+// Generating getters and setters
 @Getter
 @Setter
 @Entity
